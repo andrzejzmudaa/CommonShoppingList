@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="AddButtonOptions">
+        <item>Join to existing list</item>
+        <item>Create new list</item>
+    </array>
+    <array name="QuestionsRelatedToAddButtonOptions">
+        <item>Provide id of existing Shopping list</item>
+        <item>Provide name of new Shopping list</item>
+    </array>
+
+
+
+</resources>

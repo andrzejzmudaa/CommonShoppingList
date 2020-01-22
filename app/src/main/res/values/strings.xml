@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">CommonShoppingList</string>
+    <string name="Button"></string>
+    <string name="GlobalSharedPreferencesString">com.github.andrzejzmudaa.commonshoppinglist</string>
+    <string name="ACCOUNT_NAME_KEY_STRING">ACCOUNT_NAME_KEY</string>
+    <string name="MainActivityMessage">Dear User,\n
+        Thank you for using our app.\n
+        It seems that you didn\'t set up your userID yet.\n
+        Now we will ask you to choose your email account which will be used as uniqe idenitifier in our database to store your data.\n\n
+        Important note! \n
+        App require Google Services for proper behaviour of Application .
+    </string>
+    <string name="MainActivityButtonText">Choose User</string>
+    <string name="MyShoppingLists">My shopping Lists</string>
+    <string name="AddButtonMenu">Choose your option:</string>
+
+</resources>
