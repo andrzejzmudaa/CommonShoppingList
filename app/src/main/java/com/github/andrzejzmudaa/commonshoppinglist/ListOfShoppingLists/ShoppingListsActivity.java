@@ -17,15 +17,13 @@ public class ShoppingListsActivity extends AppCompatActivity {
 
 
     String accountName;
-    String accountNameKey;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Intent receivedIntent = getIntent();
-        accountNameKey=this.getString(R.string.ACCOUNT_NAME_KEY_STRING);
-        accountName=receivedIntent.getStringExtra(accountNameKey);
+        accountName=receivedIntent.getStringExtra(this.getString(R.string.ACCOUNT_NAME_KEY_STRING));
         setContentView(R.layout.activity_shopping_lists);
         FloatingActionButton addButton = findViewById(R.id.floating_action_button);
         addButton.setOnClickListener(new View.OnClickListener() {

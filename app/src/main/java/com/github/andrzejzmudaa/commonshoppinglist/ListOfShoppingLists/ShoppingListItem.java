@@ -1,19 +1,24 @@
 package com.github.andrzejzmudaa.commonshoppinglist.ListOfShoppingLists;
 
 
+import android.util.Log;
+
 import java.security.SecureRandom;
 
 
 public class ShoppingListItem {
 
-    String shoppingListName;
-    String whoAdded;
-    String uniqueID;
+    public String shoppingListName;
+    public String whoAdded;
+    //public String uniqueID;
+
+    public ShoppingListItem(){};
 
     public ShoppingListItem(String shoppingListName,String whoAdded){
         this.shoppingListName=shoppingListName;
         this.whoAdded=whoAdded;
-        this.uniqueID= generateRandomID();
+        //this.uniqueID= generateRandomID();
+        //Log.d("ITEM_ID","ITEM_ID generated :"+uniqueID);
     }
 
 

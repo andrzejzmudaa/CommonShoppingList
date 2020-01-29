@@ -21,21 +21,21 @@ public class MainActivity extends AppCompatActivity {
     final static String defaultAccountName = "Account name not registered";
     Button launchChooseUserActivityButton;
     String accountName;
-    String accountNameKey;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         sendDatabaseTest();
+
 
         try {
             globalSharedPreferences = getSharedPreferences(this.getString(R.string.GlobalSharedPreferencesString), Context.MODE_PRIVATE);
             accountName = globalSharedPreferences.getString(this.getString(R.string.ACCOUNT_NAME_KEY_STRING),defaultAccountName);
-        } catch (Exception e) {}
-        globalSharedPreferences=null;
+        } catch (Exception e) {
+        }
+
     }
 
     @Override
@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         }
         public void startShoppingListActivity() {
             Intent intent = new Intent(this, ShoppingListsActivity.class);
-            intent.putExtra(accountNameKey,accountName);
+            intent.putExtra(this.getString(R.string.ACCOUNT_NAME_KEY_STRING),accountName);
             startActivity(intent);
         }
 
@@ -78,9 +78,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void sendDatabaseTest() {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("message");
+        DatabaseReference myRef = database.getReference("TestDateRequest");
 
-        myRef.push().setValue("Hello, World!");
+        myRef.push().setValue("Database Test request date: "+ java.util.Calendar.getInstance().getTime());
     }
 
 

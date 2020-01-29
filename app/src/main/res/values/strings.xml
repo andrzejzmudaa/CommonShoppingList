@@ -13,5 +13,7 @@
     <string name="MainActivityButtonText">Choose User</string>
     <string name="MyShoppingLists">My shopping Lists</string>
     <string name="AddButtonMenu">Choose your option:</string>
+    <string name="ListNotAdded">Error occurred during add your shopping list. List :  </string>
+
 
 </resources>
