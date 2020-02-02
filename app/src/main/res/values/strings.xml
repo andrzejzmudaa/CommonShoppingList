@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">CommonShoppingList</string>
-    <string name="Button"></string>
+    <string name="Button">Button</string>
     <string name="GlobalSharedPreferencesString">com.github.andrzejzmudaa.commonshoppinglist</string>
     <string name="ACCOUNT_NAME_KEY_STRING">ACCOUNT_NAME_KEY</string>
     <string name="MainActivityMessage">Dear User,\n
@@ -13,7 +13,7 @@
     <string name="MainActivityButtonText">Choose User</string>
     <string name="MyShoppingLists">My shopping Lists</string>
     <string name="AddButtonMenu">Choose your option:</string>
-    <string name="ListNotAdded">Error occurred during add your shopping list. List :  </string>
+    <string name="ListNotAdded">Shopping List reference don\'t exists on our server ! </string>
 
 
 </resources>

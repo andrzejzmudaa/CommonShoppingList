@@ -4,12 +4,15 @@ package com.github.andrzejzmudaa.commonshoppinglist.ListOfShoppingLists;
 import android.util.Log;
 
 import java.security.SecureRandom;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class ShoppingListItem {
 
     public String shoppingListName;
     public String whoAdded;
+    public List<String> usersJoinedToList = new ArrayList<String>();
     //public String uniqueID;
 
     public ShoppingListItem(){};
@@ -17,6 +20,7 @@ public class ShoppingListItem {
     public ShoppingListItem(String shoppingListName,String whoAdded){
         this.shoppingListName=shoppingListName;
         this.whoAdded=whoAdded;
+        this.usersJoinedToList.add(whoAdded);
         //this.uniqueID= generateRandomID();
         //Log.d("ITEM_ID","ITEM_ID generated :"+uniqueID);
     }
