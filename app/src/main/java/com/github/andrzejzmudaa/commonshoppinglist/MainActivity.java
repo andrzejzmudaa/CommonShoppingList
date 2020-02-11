@@ -2,6 +2,7 @@ package com.github.andrzejzmudaa.commonshoppinglist;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.accounts.AccountManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -27,14 +28,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        sendDatabaseTest();
-
+        //sendDatabaseTest();
 
         try {
             globalSharedPreferences = getSharedPreferences(this.getString(R.string.GlobalSharedPreferencesString), Context.MODE_PRIVATE);
             accountName = globalSharedPreferences.getString(this.getString(R.string.ACCOUNT_NAME_KEY_STRING),defaultAccountName);
         } catch (Exception e) {
         }
+
+
+
 
     }
 
@@ -53,10 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void checkIfProperAccountName() {
 
-        if(globalSharedPreferences!=null)
-        accountName = globalSharedPreferences.getString(this.getString(R.string.ACCOUNT_NAME_KEY_STRING),defaultAccountName);
-
-        if (accountName != defaultAccountName) {
+        if (accountName != defaultAccountName &&accountName !=null) {
             Toast.makeText(this, "Account " + accountName + " will be used to connect with server!", Toast.LENGTH_LONG).show();
             startShoppingListActivity();
         } else {
@@ -72,7 +72,6 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra(this.getString(R.string.ACCOUNT_NAME_KEY_STRING),accountName);
             startActivity(intent);
         }
-
 
 
 

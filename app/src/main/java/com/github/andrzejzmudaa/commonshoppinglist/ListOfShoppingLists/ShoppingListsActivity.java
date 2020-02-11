@@ -33,7 +33,7 @@ public class ShoppingListsActivity extends AppCompatActivity {
                 builder.setTitle(R.string.AddButtonMenu)
                         .setItems(R.array.AddButtonOptions, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                       ShoppingListAlertDialog.buildInputAlertDialog(accountName,ShoppingListsActivity.this,which);
+                                       new ShoppingListAlertDialog(ShoppingListsActivity.this).buildInputAlertDialog(accountName,which);
                             }
                         });
                 builder.create().show();

@@ -45,7 +45,7 @@ public class checkGoogleServicesActivity extends AppCompatActivity {
         if (requestCode == REQUEST_CODE_EMAIL && resultCode == RESULT_OK) {
             String accountName = data.getStringExtra(AccountManager.KEY_ACCOUNT_NAME);
             SharedPreferences.Editor editor = getSharedPreferences(this.getString(R.string.GlobalSharedPreferencesString), MODE_PRIVATE).edit();
-            editor.putString(this.getString(R.string.ACCOUNT_NAME_KEY_STRING), accountName);
+            editor.putString(this.getString(R.string.ACCOUNT_NAME_KEY_STRING), accountName.replaceAll("[^a-zA-Z0-9]", ""));
             editor.commit();
             Toast.makeText(this, "Account " + accountName + " will be used to connect with server!", Toast.LENGTH_LONG).show();
         }
@@ -64,6 +64,5 @@ public class checkGoogleServicesActivity extends AppCompatActivity {
         }
         return true;
     }
-
 
 }
