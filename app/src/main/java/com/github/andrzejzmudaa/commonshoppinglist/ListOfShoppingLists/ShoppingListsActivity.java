@@ -22,32 +22,21 @@ public class ShoppingListsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_shopping_lists);
         Intent receivedIntent = getIntent();
         accountName=receivedIntent.getStringExtra(this.getString(R.string.ACCOUNT_NAME_KEY_STRING));
-        setContentView(R.layout.activity_shopping_lists);
-        FloatingActionButton addButton = findViewById(R.id.floating_action_button);
-        addButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(final View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
-                builder.setTitle(R.string.AddButtonMenu)
-                        .setItems(R.array.AddButtonOptions, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                       new ShoppingListAlertDialog(ShoppingListsActivity.this).buildInputAlertDialog(accountName,which);
-                            }
-                        });
-                builder.create().show();
-            }
-        });
 
-
-
-        if (savedInstanceState==null&&false){
+        if (savedInstanceState==null){
            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-           fragmentTransaction.add(R.id.container,ShoppingListsFragment.getInstance(),"my-shopping-lists");
+           fragmentTransaction.add(R.id.container,ShoppingListsFragment.getInstance(),"my_shopping_lists");
            fragmentTransaction.commit();
         }
 
     }
+
+    public String getAccountName(){
+        return accountName;
+    }
+
 
 }

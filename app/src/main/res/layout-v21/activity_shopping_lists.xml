@@ -10,16 +10,6 @@
      android:layout_width="match_parent"
      android:layout_height="match_parent" />
 
- <com.google.android.material.floatingactionbutton.FloatingActionButton
-     android:id="@+id/floating_action_button"
-     android:onClick="fab_clicked"
-     android:layout_width="wrap_content"
-     android:layout_height="wrap_content"
-     android:layout_gravity="bottom|right"
-     app:maxImageSize="24dp"
-     app:rippleColor="#323232"
-     app:srcCompat="@drawable/plus" />
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 
