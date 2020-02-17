@@ -14,6 +14,9 @@
     <string name="MyShoppingLists">My shopping Lists</string>
     <string name="AddButtonMenu">Choose your option:</string>
     <string name="ListNotAdded">Shopping List reference don\'t exists on our server ! </string>
+    <string name="SHOPPING_LISTS_KEY">Shopping_Lists_ID</string>
+    <string name="USERS_SHOPPING_LISTS_KEY">UsersShoppingLists</string>
+    <string name="EMPTY_STRING_ERROR_MESSAGE">This field can not be empty</string>
 
 
 </resources>

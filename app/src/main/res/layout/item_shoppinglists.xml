@@ -3,7 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@drawable/border"
+    android:padding="5dp">
+
+
 
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -16,8 +20,9 @@
         android:id="@+id/whoAdded"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="Author"
+        tools:text="AuthorEmailAddress"
         android:gravity="right"
+        android:textSize="10dp"
         android:textColor="@color/colorPrimary"
         />
 

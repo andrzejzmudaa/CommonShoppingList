@@ -3,5 +3,5 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
-    <color name="colorAuthor">#7CB342</color>
+    <color name="colorShoppingListItemBackground">#391A1A1A</color>
 </resources>

@@ -2,7 +2,10 @@ package com.github.andrzejzmudaa.commonshoppinglist.ListOfShoppingLists;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.text.InputType;
+import android.text.TextUtils;
 import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -20,24 +23,26 @@ import com.google.firebase.database.ValueEventListener;
 
 public class ShoppingListAlertDialog extends AlertDialog {
 
-    final private String SHOPPING_LISTS_KEY = "Shopping_Lists_ID";
-    final private String USERS_SHOPPING_LISTS_KEY = "UsersShoppingLists";
     private String accountName;
-    private FirebaseDatabase database = FirebaseDatabase.getInstance();
-    private DatabaseReference shoppingListsRef = database.getReference(SHOPPING_LISTS_KEY);
-    private DatabaseReference usersListsRef = database.getReference(USERS_SHOPPING_LISTS_KEY);
     private Context context;
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+    private DatabaseReference shoppingListsRef;
+    private DatabaseReference usersListsRef;
     private EditText inputText;
 
     protected ShoppingListAlertDialog(@NonNull Context context) {
         super(context);
         this.context = context;
+        shoppingListsRef = database.getReference(context.getResources().getString(R.string.SHOPPING_LISTS_KEY));
+        usersListsRef = database.getReference(context.getResources().getString(R.string.USERS_SHOPPING_LISTS_KEY));
     }
 
     public void buildInputAlertDialog(String accountNameSent, int whichCase) {
         accountName=accountNameSent;
         //accountName="test24wppl";
         inputText = new EditText(context);
+        inputText.setMaxLines(1);
+        inputText.setInputType(InputType.TYPE_CLASS_TEXT);
         final int internalWhichCase = whichCase;
         String[] questions =context.getResources().getStringArray(R.array.QuestionsRelatedToAddButtonOptions);
         String displayQuestionText=questions[whichCase];
@@ -47,14 +52,6 @@ public class ShoppingListAlertDialog extends AlertDialog {
                 .setPositiveButton("Apply", new OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        switch (internalWhichCase) {
-                            case 0:
-                                joinToExistingList(inputText.getText().toString());
-                                break;
-                            case 1:
-                                createNewShoppingList(inputText.getText().toString());
-                                break;
-                        }
                     }
                 })
                 .setNegativeButton("Cancel", new OnClickListener() {
@@ -63,8 +60,28 @@ public class ShoppingListAlertDialog extends AlertDialog {
                         dialog.cancel();
                     }
                 });
-        builder.show();
+        final AlertDialog dialog = builder.show();
+        dialog.show();
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(TextUtils.isEmpty(inputText.getText().toString())) {
+                    inputText.setError(context.getResources().getString(R.string.EMPTY_STRING_ERROR_MESSAGE));
+                    return;
+                }
+                else
+                    switch (internalWhichCase) {
+                        case 0:
+                            joinToExistingList(inputText.getText().toString());
+                            break;
+                        case 1:
+                            createNewShoppingList(inputText.getText().toString());
+                            break;
+                    }
+                dialog.dismiss();
 
+            }
+        });
     }
     private void createNewShoppingList(String listName) {
         shoppingListsRef.push().setValue(new ShoppingListItem(listName,accountName), new DatabaseReference.CompletionListener() {
