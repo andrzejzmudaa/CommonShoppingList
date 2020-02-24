@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
 
         try {
             globalSharedPreferences = getSharedPreferences(this.getString(R.string.GlobalSharedPreferencesString), Context.MODE_PRIVATE);
-            accountName = globalSharedPreferences.getString(this.getString(R.string.ACCOUNT_NAME_KEY_STRING),defaultAccountName);
         } catch (Exception e) {
         }
 
@@ -44,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        accountName = globalSharedPreferences.getString(this.getString(R.string.ACCOUNT_NAME_KEY_STRING),defaultAccountName);
         checkIfProperAccountName();
         launchChooseUserActivityButton = findViewById(R.id.launchChooseUserActivityButton);
         launchChooseUserActivityButton.setOnClickListener(new View.OnClickListener() {

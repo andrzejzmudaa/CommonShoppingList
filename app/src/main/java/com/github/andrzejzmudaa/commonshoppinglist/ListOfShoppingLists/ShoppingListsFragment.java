@@ -56,7 +56,7 @@ public class ShoppingListsFragment extends Fragment implements ChildEventListene
         View view = inflater.inflate(R.layout.fragment_shopping_lists, container, false);
         attachFAB(view);
         shoppingListsRecyclerView = view.findViewById(R.id.ShoppingListsRecyclerView);
-        shoppingListsAdapter = new ShoppingListsAdapter();
+        shoppingListsAdapter = new ShoppingListsAdapter(accountName);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
         shoppingListsRecyclerView.setLayoutManager(mLayoutManager);
         shoppingListsRecyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -90,6 +90,7 @@ public class ShoppingListsFragment extends Fragment implements ChildEventListene
 
     @Override
     public void onPause() {
+        shoppingListsAdapter.ShoppingLists.clear();
         reference.removeEventListener(this);
         super.onPause();
     }
